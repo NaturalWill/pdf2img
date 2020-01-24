@@ -24,7 +24,7 @@
 
 					<div class="name">PDF转图片</div>
 					<div class="job">文档大小
-						< 10Mb</div>
+						< 30Mb</div>
 							<div class="actions">
 								<a href="javascript:;" class="btn file">Choose Pdf
 									<input id='pdf' type='file' accept="application/pdf">
@@ -71,8 +71,8 @@
 						var mb;
 						if(fileSize) {
 							mb = fileSize / 1048576;
-							if(mb > 300) {
-								alert("文件大小不能>300M");
+							if(mb > 30) {
+								alert("文件大小不能>30M");
 								return;
 							}
 						}
