@@ -59,7 +59,7 @@
 			<script type="text/javascript" src="js/pdf.js"></script>
 			<script type="text/javascript" src="js/pdf.worker.js"></script>
 			<script>
-				// PDFJS.disableStream = true;
+				// pdfjsLib.disableStream = true;
 				$("#export").attr("disabled", "disabled"); //禁用导出图片按钮
 				var pdfFile;
 				$('#pdf').change(function() {
@@ -71,8 +71,8 @@
 						var mb;
 						if(fileSize) {
 							mb = fileSize / 1048576;
-							if(mb > 10) {
-								alert("文件大小不能>10M");
+							if(mb > 300) {
+								alert("文件大小不能>300M");
 								return;
 							}
 						}
@@ -90,7 +90,7 @@
 								data: myData
 							};
 							var typedarray = new Uint8Array(this.result);
-							PDFJS.getDocument(typedarray).then(function(pdf) { //PDF转换为canvas
+							pdfjsLib.getDocument(typedarray).then(function(pdf) { //PDF转换为canvas
 								$("#imgDiv").css("border", "0"); //清除文本、边框
 								if(pdf) {
 									var pageNum = pdf.numPages;
@@ -154,7 +154,7 @@
 					zip.generateAsync({
 						type: "blob"
 					}).then(function(content) {
-						saveAs(content, "pdftoimages.zip");
+						saveAs(content, $("#pdfName").text()+"_img.zip");
 					});
 				});
 			</script>
